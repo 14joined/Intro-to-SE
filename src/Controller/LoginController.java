@@ -1,6 +1,6 @@
 package Controller;
 
-import View.DatabaseConnection;
+import Service.DatabaseConnection;
 import javafx.concurrent.Task;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;

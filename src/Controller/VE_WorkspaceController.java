@@ -1,6 +1,6 @@
 package Controller;
 
-import Dao.VoluntaryEventService;
+import Service.VEService;
 import Model.VoluntaryEvent;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
@@ -148,7 +148,7 @@ public class VE_WorkspaceController implements Initializable {
         //
 
         voluntaryEventsList = FXCollections.observableArrayList();
-        VoluntaryEventService generalEventDAO = new VoluntaryEventService();
+        VEService generalEventDAO = new VEService();
         List<VoluntaryEvent> lst = generalEventDAO.getList();
         for(var s : lst){
             voluntaryEventsList.add(s);
@@ -168,7 +168,7 @@ public class VE_WorkspaceController implements Initializable {
         Stage window = (Stage) closeButton.getScene().getWindow();
         Parent tableViewParent = null;
         try {
-            String title = "You are in main";
+            String title = "Phần mềm quản lý thu phí";
             window.setTitle(title);
             tableViewParent = FXMLLoader.load(getClass().getResource("../View/updated_main.fxml"));
         } catch (IOException e) {
@@ -256,7 +256,7 @@ public class VE_WorkspaceController implements Initializable {
         Optional<ButtonType> result = alert.showAndWait();
         if(result.get() == buttonTypeYes) {
             voluntaryEventsList.remove(selected);
-            VoluntaryEventService.delete(selected);
+            VEService.delete(selected);
         }
     }
 
@@ -266,7 +266,7 @@ public class VE_WorkspaceController implements Initializable {
         Stage window = (Stage) familyButton.getScene().getWindow();
         Parent tableViewParent = null;
         try {
-            String title = "Workspace - Citizen Management";
+            String title = "Quản lý hộ gia đình";
             window.setTitle(title);
             tableViewParent = FXMLLoader.load(getClass().getResource("../View/familyworkspace.fxml"));
         } catch (IOException e) {
@@ -278,4 +278,20 @@ public class VE_WorkspaceController implements Initializable {
         window.show();
     }
 
+    @FXML
+    public void switchEvent(ActionEvent event) {
+        Stage window = (Stage) familyButton.getScene().getWindow();
+        Parent tableViewParent = null;
+        try {
+            String title = "Quản lý thu phí bắt buộc";
+            window.setTitle(title);
+            tableViewParent = FXMLLoader.load(getClass().getResource("../View/GEworkspace.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene tableViewScene = new Scene(tableViewParent);
+
+        window.setScene(tableViewScene);
+        window.show();
+    }
 }

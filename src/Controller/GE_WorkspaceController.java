@@ -1,12 +1,7 @@
 package Controller;
 
-import Dao.GEService;
-import Dao.VoluntaryEventService;
+import Service.GEService;
 import Model.GeneralEvent;
-import Model.VoluntaryEvent;
-import javafx.animation.KeyFrame;
-import javafx.animation.KeyValue;
-import javafx.animation.Timeline;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,21 +14,16 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import javafx.util.Duration;
 
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class WorkspaceController implements Initializable {
+public class GE_WorkspaceController implements Initializable {
 
     @FXML
     private ImageView calendarImageView;
@@ -65,6 +55,10 @@ public class WorkspaceController implements Initializable {
     private ImageView deleteObImageView;
     @FXML
     private Button closeButton;
+    @FXML
+    private Button familyButton;
+    @FXML
+    private Button switchEventButton;
 
     @FXML
     private TableView<GeneralEvent> tableView;
@@ -151,7 +145,7 @@ public class WorkspaceController implements Initializable {
         Stage window = (Stage) closeButton.getScene().getWindow();
         Parent tableViewParent = null;
         try {
-            String title = "You are in main";
+            String title = "Phần mềm quản lý thu phí";
             window.setTitle(title);
             tableViewParent = FXMLLoader.load(getClass().getResource("../View/updated_main.fxml"));
         } catch (IOException e) {
@@ -224,5 +218,41 @@ public class WorkspaceController implements Initializable {
 
         stage.setScene(tableViewScene);
         stage.show();
+    }
+
+    @FXML
+    // Chuyển sang Family Management
+    public void familyOnAction(ActionEvent event){
+        Stage window = (Stage) familyButton.getScene().getWindow();
+        Parent tableViewParent = null;
+        try {
+            String title = "Quản lý hộ gia đình";
+            window.setTitle(title);
+            tableViewParent = FXMLLoader.load(getClass().getResource("../View/familyworkspace.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene tableViewScene = new Scene(tableViewParent);
+
+        window.setScene(tableViewScene);
+        window.show();
+    }
+
+    @FXML
+    // Chuyển sang Event management
+    public void switchEvent(ActionEvent event){
+        Stage window = (Stage) switchEventButton.getScene().getWindow();
+        Parent tableViewParent = null;
+        try {
+            String title = "Quản lý thu phí đóng góp";
+            window.setTitle(title);
+            tableViewParent = FXMLLoader.load(getClass().getResource("../View/VEworkspace.fxml"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        Scene tableViewScene = new Scene(tableViewParent);
+
+        window.setScene(tableViewScene);
+        window.show();
     }
 }

@@ -1,12 +1,12 @@
-package Dao;
+package Service;
 
 import Model.Citizen;
 import Model.GeneralEvent;
-import Model.VoluntaryEvent;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -51,6 +51,32 @@ public class GEService {
     public static void delete(GeneralEvent generalEvent) {
         String sql = "DELETE FROM `quanlythutien`.`thuphibatbuoc` WHERE (Ma = "+ generalEvent.getId() + ");";
         DBConnection.execute(sql);
+    }
+
+    public static void edit(GeneralEvent generalEvent) {
+        String sql = "UPDATE `quanlythutien`.`thuphibatbuoc` SET " +
+                "`Ten` = '"+ generalEvent.getName() +"', " +
+                "`Tien` = '"+ generalEvent.getMoney() +"', " +
+                "`GhiChu` = '"+ generalEvent.getNote() +"' WHERE (`Ma` = '2');";
+        DBConnection.execute(sql);
+    }
+
+    public static boolean exists(int id) {
+        Connection connection = DBConnection.getConnection();
+        String sql = "SELECT COUNT(Ma) FROM thuphibatbuoc WHERE Ma = " + id;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                if(rs.getInt(1) == 1) {
+                    return true;
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
     }
 
     public static void main(String[] args) {

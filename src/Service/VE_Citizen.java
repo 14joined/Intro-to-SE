@@ -1,8 +1,11 @@
-package Dao;
+package Service;
+
+import Controller.VE_WorkspaceController;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +13,7 @@ public class VE_Citizen {
     private int maHo;
     private String tenChuHo;
     private String ghiChu;
-    private int soTien;
+    private String soTien;
 
     public String getTenChuHo() {
         return tenChuHo;
@@ -28,11 +31,11 @@ public class VE_Citizen {
         this.ghiChu = ghiChu;
     }
 
-    public int getSoTien() {
+    public String getSoTien() {
         return soTien;
     }
 
-    public void setSoTien(int soTien) {
+    public void setSoTien(String soTien) {
         this.soTien = soTien;
     }
 
@@ -57,7 +60,7 @@ public class VE_Citizen {
                 veCitizen.setMaHo(rs.getInt(1));
                 veCitizen.setTenChuHo(rs.getString(2));
                 veCitizen.setGhiChu(rs.getString(4));
-                veCitizen.setSoTien(rs.getInt(3));
+                veCitizen.setSoTien(String.valueOf(rs.getInt(3)));
                 list.add(veCitizen);
             }
         } catch (Exception e) {
@@ -67,10 +70,14 @@ public class VE_Citizen {
     }
 
     public static void editVE_Citizen(VE_Citizen ve_citizen){
+        if(ve_citizen.getGhiChu() == "null") {
+            ve_citizen.setGhiChu("");
+        }
         String sql = "UPDATE `quanlythutien`.`donggop` SET " +
                 "`GhiChu` = '"+ ve_citizen.getGhiChu() +"'," +
-                " `SoTien` = '"+ ve_citizen.getSoTien() +
-                "' WHERE (`MaKhoan` = '2') and (`MaHo` = '2');";
+                " `SoTien` = '"+ Integer.parseInt(ve_citizen.getSoTien()) +
+                "' WHERE (`MaKhoan` = '"+ VE_WorkspaceController.selected.getId() +"') and" +
+                " (`MaHo` = '"+ ve_citizen.getMaHo() +"');";
         DBConnection.execute(sql);
     }
 }

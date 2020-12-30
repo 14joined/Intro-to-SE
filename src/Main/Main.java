@@ -1,4 +1,4 @@
-package View;
+package Main;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../View/login.fxml"));
 
         File iconFile = new File("images/icon.png");
         Image icon = new Image(iconFile.toURI().toString());

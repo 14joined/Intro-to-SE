@@ -1,4 +1,4 @@
-package View;
+package Service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ public class DatabaseConnection {
     public Connection getConnection() {
         String databaseName = "demo_db";
         String databaseUser = "root";
-        String databasePassword = "Chunganhzqy.0110";
+        String databasePassword = ""; //Dien password
         String url = "jdbc:mysql://localhost:3306/" + databaseName;
 
         try {

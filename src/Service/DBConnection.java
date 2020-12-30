@@ -1,4 +1,4 @@
-package Dao;
+package Service;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,7 +11,7 @@ public class DBConnection {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             connection = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/quanlythutien", "root", "password");
+                    "jdbc:mysql://localhost:3306/quanlythutien", "root", ""); //Dien password
         } catch (Exception e) {
             e.printStackTrace();
         }

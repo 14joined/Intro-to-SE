@@ -188,7 +188,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <Button mnemonicParsing="false" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
+            <Button mnemonicParsing="false" onAction="#switchEvent" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
                <graphic>
                   <ImageView fx:id="eventImageView" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>

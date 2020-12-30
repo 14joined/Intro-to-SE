@@ -1,6 +1,6 @@
 package Controller;
 
-import Dao.VE_Citizen;
+import Service.VE_Citizen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -25,10 +25,10 @@ public class EditVE_Citizen implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        idLabel.setText(String.valueOf(EditVoluntaryEventController.selected.getMaHo()));
-        nameLabel.setText(EditVoluntaryEventController.selected.getTenChuHo());
-        moneyTF.setText(String.valueOf(EditVoluntaryEventController.selected.getSoTien()));
-        noteTF.setText(EditVoluntaryEventController.selected.getGhiChu());
+        idLabel.setText(String.valueOf(EditVEController.selected.getMaHo()));
+        nameLabel.setText(EditVEController.selected.getTenChuHo());
+        moneyTF.setText(String.valueOf(EditVEController.selected.getSoTien()));
+        noteTF.setText(EditVEController.selected.getGhiChu());
     }
 
     @FXML
@@ -42,11 +42,11 @@ public class EditVE_Citizen implements Initializable {
         VE_Citizen veCitizen = new VE_Citizen();
         veCitizen.setMaHo(Integer.parseInt(idLabel.getText()));
         veCitizen.setTenChuHo(nameLabel.getText());
-        veCitizen.setSoTien(Integer.parseInt(moneyTF.getText()));
+        veCitizen.setSoTien(moneyTF.getText());
         veCitizen.setGhiChu(noteTF.getText());
         VE_Citizen.editVE_Citizen(veCitizen);
-        EditVoluntaryEventController.veCitizens.remove(EditVoluntaryEventController.selected);
-        EditVoluntaryEventController.veCitizens.add(veCitizen);
+        EditVEController.veCitizens.remove(EditVEController.selected);
+        EditVEController.veCitizens.add(veCitizen);
         Stage stage = (Stage) idLabel.getScene().getWindow();
         stage.close();
     }

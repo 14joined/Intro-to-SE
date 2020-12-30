@@ -1,8 +1,7 @@
-package Dao;
+package Service;
 
 import Model.Citizen;
 import Model.VoluntaryEvent;
-import Controller.FamilyWorkspaceController;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -12,9 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 // Class làm việc với cơ sở dữ liệu
-public class CitizenService implements CitizenDAO{
+public class CitizenService{
 
-    @Override
     public List<Citizen> getList() {
         Connection connection = DBConnection.getConnection();
         String sql = "SELECT * from hogiadinh";
@@ -25,7 +23,7 @@ public class CitizenService implements CitizenDAO{
             while (rs.next()) {
                 Citizen citizen = new Citizen();
                 citizen.setMaHo(rs.getInt(1));
-                citizen.setSoThanhVien(rs.getInt(3));
+                citizen.setSoThanhVien(String.valueOf(rs.getInt(3)));
                 citizen.setTenChuHo(rs.getString(2));
                 list.add(citizen);
             }
@@ -58,11 +56,11 @@ public class CitizenService implements CitizenDAO{
                 "('"+ citizen.getMaHo() +"', '" + citizen.getTenChuHo() + "', '" + citizen.getSoThanhVien() + "')";
         DBConnection.execute(sql);
         VE_Citizen veCitizen = new VE_Citizen();
-        veCitizen.setSoTien(0);
+        veCitizen.setSoTien("0");
         veCitizen.setGhiChu("");
         veCitizen.setTenChuHo(citizen.getTenChuHo());
-        VoluntaryEventService voluntaryEventService = new VoluntaryEventService();
-        List<VoluntaryEvent> list = voluntaryEventService.getList();
+        VEService VEService = new VEService();
+        List<VoluntaryEvent> list = VEService.getList();
         for(var i : list) {
             sql = "INSERT INTO `quanlythutien`.`donggop` (`MaKhoan`, `MaHo`) VALUES " +
                     "('" + i.getId() +"', '"+ citizen.getMaHo() +"');";
@@ -76,10 +74,10 @@ public class CitizenService implements CitizenDAO{
     }
 
     public static void editCitizen(Citizen citizen) {
-        String sql = "UPDATE `quanlythutien`.`hogiadinh` SET `idhogiadinh` = " + citizen.getMaHo()
-                    +", `tenchuho` = '"+ citizen.getTenChuHo()
+        String sql = "UPDATE `quanlythutien`.`hogiadinh` SET"
+                    +" `tenchuho` = '"+ citizen.getTenChuHo()
                     + "', `sothanhvien` = '"+ citizen.getSoThanhVien()
-                    +"' WHERE (`idhogiadinh` = '"+ FamilyWorkspaceController.selected.getMaHo() +"');";
+                    +"' WHERE (`idhogiadinh` = '"+ citizen.getMaHo() +"');";
         DBConnection.execute(sql);
     }
 

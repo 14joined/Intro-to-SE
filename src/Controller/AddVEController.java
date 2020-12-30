@@ -1,6 +1,6 @@
 package Controller;
 
-import Dao.VoluntaryEventService;
+import Service.VEService;
 import Model.VoluntaryEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,8 +10,10 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class AddVoluntaryEventController implements Initializable {
+public class AddVEController implements Initializable {
     @FXML
     private TextField idTF;
     @FXML
@@ -45,6 +47,17 @@ public class AddVoluntaryEventController implements Initializable {
             saveMessageLabel.setText("Tên khoản thu không được để trống");
             return;
         }
+        String idText = idTF.getText();
+        Pattern pattern = Pattern.compile("\\d*");
+        Matcher matcher = pattern.matcher(idText);
+        if(!matcher.matches()) {
+            saveMessageLabel.setText("ID phải là số nguyên dương");
+            return;
+        }
+        if(VEService.exists(Integer.parseInt(idText))){
+            saveMessageLabel.setText("ID đã tồn tại");
+            return;
+        }
         VoluntaryEvent voluntaryEvent = new VoluntaryEvent();
         voluntaryEvent.setId(Integer.parseInt(idTF.getText()));
         voluntaryEvent.setName(nameTF.getText());
@@ -57,7 +70,7 @@ public class AddVoluntaryEventController implements Initializable {
         voluntaryEvent.setNote(noteTA.getText());
         VE_WorkspaceController.voluntaryEventsList.add(voluntaryEvent);
         Stage stage = (Stage) save.getScene().getWindow();
-        VoluntaryEventService.add(voluntaryEvent);
+        VEService.add(voluntaryEvent);
         stage.close();
     }
 

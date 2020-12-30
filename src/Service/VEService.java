@@ -1,17 +1,17 @@
-package Dao;
+package Service;
 
 import Model.Citizen;
 import Model.VoluntaryEvent;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class VoluntaryEventService implements VoluntaryEventDAO {
+public class VEService {
 
-    @Override
     public List<VoluntaryEvent> getList() {
         Connection connection = DBConnection.getConnection();
         String sql = "Select * from thuphidonggop";
@@ -82,12 +82,29 @@ public class VoluntaryEventService implements VoluntaryEventDAO {
             sql += " `NgayKetThuc` = '"+ date2.toString() +"',";
         }
         sql += " `GhiChu` = 'ghkv'" + " WHERE (`Ma` = '"+ voluntaryEvent.getId() + "');";
-        System.out.println(sql);
         DBConnection.execute(sql);
     }
 
+    public static boolean exists(int id) {
+        Connection connection = DBConnection.getConnection();
+        String sql = "SELECT COUNT(Ma) FROM thuphidonggop WHERE Ma = " + id;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()) {
+                if(rs.getInt(1) == 1) {
+                    return true;
+                }
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
-        VoluntaryEventService generalEventDAOImpl = new VoluntaryEventService();
+        VEService generalEventDAOImpl = new VEService();
         List<VoluntaryEvent> lst = generalEventDAOImpl.getList();
         for(var s : lst){
             System.out.println(s.getId() + " " + s.getName() + " " + s.getDate1() + " " + s.getDate2() + " " + s.getNote());

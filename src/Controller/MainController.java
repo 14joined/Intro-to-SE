@@ -1,4 +1,4 @@
-package View;
+package Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -74,7 +74,7 @@ public class MainController implements Initializable {
         Parent tableViewParent = null;
         try {
             stage.setTitle("Add a general event");
-            tableViewParent = FXMLLoader.load(getClass().getResource("AddGeneralEvent.fxml"));
+            tableViewParent = FXMLLoader.load(getClass().getResource("../View/AddGeneralEvent.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -92,7 +92,7 @@ public class MainController implements Initializable {
         Parent tableViewParent = null;
         try {
             stage.setTitle("Add a voluntary event");
-            tableViewParent = FXMLLoader.load(getClass().getResource("AddVoluntaryEvent.fxml"));
+            tableViewParent = FXMLLoader.load(getClass().getResource("../View/AddVoluntaryEvent.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -107,11 +107,11 @@ public class MainController implements Initializable {
 
         Stage stage = (Stage) menuButton.getScene().getWindow();
 //        Stage stage = new Stage();
-        stage.setTitle("Workspace - Event Management");
+        stage.setTitle("Quản lý thu phí đóng góp");
 
         Scene tableViewScene = null;
         try {
-            tableViewScene = new Scene(FXMLLoader.load(getClass().getResource("VEworkspace.fxml")));
+            tableViewScene = new Scene(FXMLLoader.load(getClass().getResource("../View/VEworkspace.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -124,11 +124,11 @@ public class MainController implements Initializable {
     public void citizenManagementOnAction(ActionEvent event) {
         Stage stage = (Stage) menuButton.getScene().getWindow();
 //        Stage stage = new Stage();
-        stage.setTitle("Workspace - Citizen Management");
+        stage.setTitle("Quản lý hộ gia đình");
 
         Scene tableViewScene = null;
         try {
-            tableViewScene = new Scene(FXMLLoader.load(getClass().getResource("familyworkspace.fxml")));
+            tableViewScene = new Scene(FXMLLoader.load(getClass().getResource("../View/familyworkspace.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -143,11 +143,11 @@ public class MainController implements Initializable {
 
         Stage stage = (Stage) menuButton.getScene().getWindow();
 //        Stage stage = new Stage();
-        stage.setTitle("Workspace -General Event Management");
+        stage.setTitle("Quản lý thu phí bắt buộc");
 
         Scene tableViewScene = null;
         try {
-            tableViewScene = new Scene(FXMLLoader.load(getClass().getResource("../View/workspace.fxml")));
+            tableViewScene = new Scene(FXMLLoader.load(getClass().getResource("../View/GEworkspace.fxml")));
         } catch (IOException e) {
             e.printStackTrace();
         }

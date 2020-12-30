@@ -1,7 +1,8 @@
 package Controller;
 
-import Dao.CitizenService;
+import Service.CitizenService;
 import Model.Citizen;
+import Service.VE_Citizen;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -12,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -75,7 +77,7 @@ public class FamilyWorkspaceController implements Initializable {
     private TableColumn<Citizen, String> nameCol;
 
     @FXML
-    private TableColumn <Citizen, Integer> numCol;
+    private TableColumn <Citizen, String> numCol;
 
     public static ObservableList<Citizen> citizenList; // Danh sách hộ gia đình trong TableView
     public static Citizen selected;                    // Hộ gia đình đang được chọn
@@ -139,6 +141,8 @@ public class FamilyWorkspaceController implements Initializable {
         eventButton.setTooltip(new Tooltip("Quản lý thu phí đóng góp"));
         familyButton.setTooltip(new Tooltip("Quản lý hộ gia đình"));
 
+        tableView.setEditable(true);
+
         citizenList = FXCollections.observableArrayList();
         CitizenService citizenService = new CitizenService();
         List<Citizen> list = citizenService.getList();
@@ -148,7 +152,30 @@ public class FamilyWorkspaceController implements Initializable {
         idCol.setText("Mã hộ");
         idCol.setCellValueFactory(new PropertyValueFactory<Citizen, Integer>("maHo"));
         nameCol.setCellValueFactory(new PropertyValueFactory<Citizen, String>("tenChuHo"));
-        numCol.setCellValueFactory(new PropertyValueFactory<Citizen, Integer>("soThanhVien"));
+        numCol.setCellValueFactory(new PropertyValueFactory<Citizen, String>("soThanhVien"));
+
+        nameCol.setCellFactory(TextFieldTableCell.<Citizen>forTableColumn());
+        nameCol.setOnEditCommit((TableColumn.CellEditEvent<Citizen, String> event) ->{
+                    TablePosition<Citizen, String> pos = event.getTablePosition();
+                    String newName = event.getNewValue();
+                    int row = pos.getRow();
+                    Citizen citizen = event.getTableView().getItems().get(row);
+                    citizen.setTenChuHo(newName);
+                    CitizenService.editCitizen(citizen);
+                }
+        );
+
+        numCol.setCellFactory(TextFieldTableCell.<Citizen>forTableColumn());
+        numCol.setOnEditCommit((TableColumn.CellEditEvent<Citizen, String> event) ->{
+                    TablePosition<Citizen, String> pos = event.getTablePosition();
+                    String newNum = event.getNewValue();
+                    int row = pos.getRow();
+                    Citizen citizen = event.getTableView().getItems().get(row);
+                    citizen.setSoThanhVien(newNum);
+                    CitizenService.editCitizen(citizen);
+                }
+        );
+
         tableView.setItems(citizenList);
     }
 
@@ -158,7 +185,7 @@ public class FamilyWorkspaceController implements Initializable {
         Stage window = (Stage) closeButton.getScene().getWindow();
         Parent tableViewParent = null;
         try {
-            String title = "You are in main";
+            String title = "Phần mềm quản lý thu phí";
             window.setTitle(title);
             tableViewParent = FXMLLoader.load(getClass().getResource("../View/updated_main.fxml"));
         } catch (IOException e) {
@@ -176,7 +203,7 @@ public class FamilyWorkspaceController implements Initializable {
         Stage window = (Stage) eventButton.getScene().getWindow();
         Parent tableViewParent = null;
         try {
-            String title = "Workspace - Event Management";
+            String title = "Quản lý thu phí đóng góp";
             window.setTitle(title);
             tableViewParent = FXMLLoader.load(getClass().getResource("../View/VEworkspace.fxml"));
         } catch (IOException e) {

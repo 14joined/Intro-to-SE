@@ -3,9 +3,9 @@ package Model;
 public class Citizen {
     private int maHo;
     private String tenChuHo;
-    private int soThanhVien;
+    private String soThanhVien;
 
-    public Citizen(int id, String name, int num){
+    public Citizen(int id, String name, String num){
         this.maHo = id;
         this.tenChuHo = name;
         this.soThanhVien = num;
@@ -31,11 +31,11 @@ public class Citizen {
         this.tenChuHo = tenChuHo;
     }
 
-    public int getSoThanhVien() {
+    public String getSoThanhVien() {
         return soThanhVien;
     }
 
-    public void setSoThanhVien(int soThanhVien) {
+    public void setSoThanhVien(String soThanhVien) {
         this.soThanhVien = soThanhVien;
     }
 }

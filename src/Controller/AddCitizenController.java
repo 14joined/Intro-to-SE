@@ -1,6 +1,6 @@
 package Controller;
 
-import Dao.CitizenService;
+import Service.CitizenService;
 import Model.Citizen;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -60,6 +60,18 @@ public class AddCitizenController implements Initializable {
 
     @FXML
     public void saveOnAction(ActionEvent e) {
+        if(idTF.getText().isBlank()) {
+            saveMessageLabel.setText("Bạn chưa điền ID");
+            return;
+        }
+        if(nameTF.getText().isBlank()) {
+            saveMessageLabel.setText("Bạn chưa điền tên chủ hộ");
+            return;
+        }
+        if(numTF.getText().isBlank()) {
+            saveMessageLabel.setText("Bạn chưa diền số nhân khẩu");
+            return;
+        }
         String idText = idTF.getText();
         String numText = numTF.getText();
         Pattern pattern = Pattern.compile("\\d*");
@@ -84,7 +96,7 @@ public class AddCitizenController implements Initializable {
         Citizen citizen = new Citizen();
         citizen.setMaHo(newID);
         citizen.setTenChuHo(nameTF.getText());
-        citizen.setSoThanhVien(Integer.parseInt(numTF.getText()));
+        citizen.setSoThanhVien(numTF.getText());
         if(string == "edit") {
             if(newID != FamilyWorkspaceController.selected.getMaHo()) {
                 saveMessageLabel.setText("Không thể thay đổi ID");

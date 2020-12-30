@@ -1,6 +1,6 @@
 package Controller;
 
-import Dao.GEService;
+import Service.GEService;
 import Model.GeneralEvent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,8 +10,10 @@ import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
-public class AddGeneralEventController implements Initializable {
+public class AddGEController implements Initializable {
     @FXML
     private TextField idTF;
     @FXML
@@ -42,11 +44,32 @@ public class AddGeneralEventController implements Initializable {
     @FXML
     public void saveOnAction(ActionEvent event) {
         if(idTF.getText().isBlank()) {
-            saveMessageLabel.setText("ID không được để trống");
+            saveMessageLabel.setText("Bạn chưa điền ID");
             return;
         }
         if(nameTF.getText().isBlank()) {
-            saveMessageLabel.setText("Tên khoản thu không được để trống");
+            saveMessageLabel.setText("Bạn chưa điền tên khoản phí");
+            return;
+        }
+        if(moneyTF.getText().isBlank()) {
+            saveMessageLabel.setText("Bạn chưa điền số tiền");
+            return;
+        }
+        String idText = idTF.getText();
+        String moneyText = moneyTF.getText();
+        Pattern pattern = Pattern.compile("\\d*");
+        Matcher matcher = pattern.matcher(idText);
+        if(!matcher.matches()) {
+            saveMessageLabel.setText("ID phải là số nguyên dương");
+            return;
+        }
+        matcher = pattern.matcher(moneyText);
+        if(!matcher.matches()) {
+            saveMessageLabel.setText("Số tiền phải là số nguyên dương");
+            return;
+        }
+        if(GEService.exists(Integer.parseInt(idText))) {
+            saveMessageLabel.setText("ID đã tồn tại");
             return;
         }
         GeneralEvent generalEvent = new GeneralEvent();
@@ -54,7 +77,7 @@ public class AddGeneralEventController implements Initializable {
         generalEvent.setName(nameTF.getText());
         generalEvent.setNote(noteTA.getText());
         generalEvent.setMoney(Integer.parseInt(moneyTF.getText()));
-        WorkspaceController.generalEvents.add(generalEvent);
+        GE_WorkspaceController.generalEvents.add(generalEvent);
         Stage stage = (Stage) save.getScene().getWindow();
         GEService.add(generalEvent);
         stage.close();
