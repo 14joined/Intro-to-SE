@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DetailFamilyController">
+   <children>
+      <Label layoutX="30.0" layoutY="22.0" text="Hộ gia đình ">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label fx:id="name" layoutX="119.0" layoutY="22.0" text="Label">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableView1" layoutY="81.0" prefHeight="160.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="idCol1" prefWidth="66.0" text="Mã khoản" />
+          <TableColumn fx:id="nameCol1" prefWidth="165.0" text="Tên khoản" />
+            <TableColumn fx:id="moneyCol1" prefWidth="112.0" text="Số tiền" />
+            <TableColumn fx:id="noteCol1" prefWidth="256.0" text="Ghi chú" />
+        </columns>
+      </TableView>
+      <Label layoutX="30.0" layoutY="57.0" text="Khoản đóng góp đã tham gia">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="253.0" text="Khoản bắt buộc đã đóng tiền">
+         <font>
+            <Font name="System Bold Italic" size="13.0" />
+         </font>
+      </Label>
+      <TableView fx:id="tableView2" layoutX="-1.0" layoutY="277.0" prefHeight="176.0" prefWidth="600.0">
+        <columns>
+          <TableColumn fx:id="idCol2" prefWidth="108.0" text="Mã khoản" />
+          <TableColumn fx:id="nameCol2" prefWidth="360.0" text="Tên khoản" />
+            <TableColumn fx:id="moneyCol2" prefWidth="131.0" text="Số tiền" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>

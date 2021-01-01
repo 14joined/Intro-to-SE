@@ -31,7 +31,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class VE_WorkspaceController implements Initializable {
+public class VE_WorkspaceController extends EditVEController implements Initializable {
 
     @FXML
     private ImageView calendarImageView;
