@@ -13,7 +13,7 @@
    <children>
       <ImageView fx:id="addImageView" fitHeight="13.0" fitWidth="13.0" layoutX="232.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/add.png" />
+            <Image url="@../../res/add.png" />
          </image>
       </ImageView>
       <Button layoutX="245.0" layoutY="263.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="See coming events" />
@@ -33,7 +33,7 @@
       </MenuButton>
       <ImageView fx:id="brandingImageView" fitHeight="122.0" fitWidth="117.0" layoutX="258.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/MenuIconB.png" />
+            <Image url="@../../res/MenuIconB.png" />
          </image>
       </ImageView>
       <MenuButton layoutX="245.0" layoutY="227.0" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Add a new list">
@@ -49,22 +49,22 @@
       </Text>
       <ImageView fx:id="settingImageView" fitHeight="13.0" fitWidth="13.0" layoutX="414.0" layoutY="448.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/settings.png" />
+            <Image url="@../../res/settings.png" />
          </image>
       </ImageView>
       <ImageView fx:id="eventImageView" fitHeight="26.0" fitWidth="28.0" layoutX="226.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/events.png" />
+            <Image url="@../../res/events.png" />
          </image>
       </ImageView>
       <ImageView fx:id="managementImageView" fitHeight="13.0" fitWidth="262.0" layoutX="233.0" layoutY="306.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/management.png" />
+            <Image url="@../../res/management.png" />
          </image>
       </ImageView>
       <ImageView fx:id="citizenImageView" fitHeight="13.0" fitWidth="13.0" layoutX="233.0" layoutY="344.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../images/citizen.png" />
+            <Image url="@../../res/citizen.png" />
          </image>
       </ImageView>
    </children>

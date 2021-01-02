@@ -50,7 +50,7 @@
             <Button layoutX="-27.0" layoutY="25.0" mnemonicParsing="false" rotate="-90.0" style="-fx-background-color: d3d3d3;" text="Calender" />
             <ImageView fx:id="calendarImageViewB" fitHeight="25.0" fitWidth="25.0" layoutY="72.0" pickOnBounds="true" preserveRatio="true" rotate="-90.0">
                <image>
-                  <Image url="@../../images/calendar.png" />
+                  <Image url="@../../res/calendar.png" />
                </image>
             </ImageView>
          </children>
@@ -81,7 +81,7 @@
          <children>
             <ImageView fx:id="deleteImageView" fitHeight="20.0" fitWidth="19.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <image>
-                  <Image url="@../../images/delete.jpg" />
+                  <Image url="@../../res/delete.jpg" />
                </image>
             </ImageView>
             <Button fx:id="closeButton" mnemonicParsing="false" onAction="#closeOnAction" opacity="0.0" style="-fx-background-color: #d3d3d3;" GridPane.columnIndex="10" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="CENTER" />
@@ -93,23 +93,23 @@
             </MenuButton>
             <ImageView fx:id="calendarImageView" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="2">
                <image>
-                  <Image url="@../../images/calendar.png" />
+                  <Image url="@../../res/calendar.png" />
                </image>
             </ImageView>
             <ImageView fx:id="calculatorImageView" fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="2">
                <image>
-                  <Image url="@../../images/calculator.png" />
+                  <Image url="@../../res/calculator.png" />
                </image>
             </ImageView>
             <TextField minHeight="-Infinity" minWidth="-Infinity" prefHeight="27.0" prefWidth="136.0" GridPane.columnIndex="6" GridPane.columnSpan="5" GridPane.rowIndex="1" />
             <ImageView fx:id="searchImageView" fitHeight="20.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="11" GridPane.halignment="CENTER" GridPane.rowIndex="1">
                <image>
-                  <Image url="@../../images/search.png" />
+                  <Image url="@../../res/search.png" />
                </image>
             </ImageView>
             <ImageView fx:id="undoImageView" fitHeight="26.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="6" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <image>
-                  <Image url="@../../images/undoB.png" />
+                  <Image url="@../../res/undoB.png" />
                </image>
             </ImageView>
             <MenuBar prefHeight="60.0" prefWidth="718.0" style="-fx-background-color: #f1f1f1;" GridPane.columnSpan="2147483647">
@@ -139,24 +139,24 @@
             </MenuBar>
             <ImageView fitHeight="21.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="8" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <image>
-                  <Image url="@../../images/add.png" />
+                  <Image url="@../../res/add.png" />
                </image>
             </ImageView>
             <ImageView fx:id="undoImageViewB" fitHeight="26.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" GridPane.columnIndex="7" GridPane.halignment="CENTER" GridPane.rowIndex="2">
                <image>
-                  <Image url="@../../images/undoB.png" />
+                  <Image url="@../../res/undoB.png" />
                </image>
             </ImageView>
             <ImageView fx:id="plotImageView" fitHeight="53.0" fitWidth="53.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.rowSpan="2">
                <image>
-                  <Image url="@../../images/statistics.png" />
+                  <Image url="@../../res/statistics.png" />
                </image>
             </ImageView>
             <Button fx:id="switchEventButton" mnemonicParsing="false" onAction="#switchEvent" GridPane.columnIndex="2" GridPane.rowIndex="1" GridPane.rowSpan="2">
                <graphic>
                   <ImageView fx:id="eventImageView" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/eventsB.png" />
+                        <Image url="@../../res/eventsB.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -165,7 +165,7 @@
                <graphic>
                   <ImageView fx:id="familyImageView" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/familyB.png" />
+                        <Image url="@../../res/familyB.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -174,7 +174,7 @@
                <graphic>
                   <ImageView fx:id="addImageView" fitHeight="13.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/add.png" />
+                        <Image url="@../../res/add.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -183,7 +183,7 @@
                <graphic>
                   <ImageView fx:id="deleteObImageView" fitHeight="13.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/deleteB.png" />
+                        <Image url="@../../res/deleteB.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -192,7 +192,7 @@
                <graphic>
                   <ImageView fx:id="editImageView" fitHeight="13.0" fitWidth="17.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../images/editB.png" />
+                        <Image url="@../../res/editB.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -217,17 +217,17 @@
             <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="23.0" prefWidth="80.0" rotate="90.0" style="-fx-background-color: #d3d3d3;" text="Remove" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="CENTER" />
             <ImageView fx:id="listImageView" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.halignment="CENTER" GridPane.valignment="BOTTOM">
                <image>
-                  <Image url="@../../images/list.png" />
+                  <Image url="@../../res/list.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="BOTTOM">
                <image>
-                  <Image url="@../../images/editB.png" />
+                  <Image url="@../../res/editB.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="21.0" fitWidth="21.0" pickOnBounds="true" preserveRatio="true" rotate="90.0" GridPane.halignment="CENTER" GridPane.rowIndex="3" GridPane.valignment="BOTTOM">
                <image>
-                  <Image url="@../../images/deleteB.png" />
+                  <Image url="@../../res/deleteB.png" />
                </image>
             </ImageView>
          </children>

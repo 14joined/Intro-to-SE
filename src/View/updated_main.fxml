@@ -47,7 +47,7 @@
       </MenuButton>
       <ImageView fx:id="settingImageView" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.rowIndex="9">
          <image>
-            <Image url="@../../images/settings.png" />
+            <Image url="@../../res/settings.png" />
          </image>
       </ImageView>
       <MenuButton fx:id="menuButton" mnemonicParsing="false" style="-fx-background-color: #ffffff;" text="Thêm sự kiện" GridPane.columnIndex="2" GridPane.halignment="LEFT" GridPane.rowIndex="4">
@@ -61,27 +61,27 @@
       <Button mnemonicParsing="false" onAction="#citizenManagementOnAction" style="-fx-background-color: #ffffff;" text="Quản lý hộ gia đình" GridPane.columnIndex="2" GridPane.rowIndex="8" />
       <ImageView fx:id="citizenImageView" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="8">
          <image>
-            <Image url="@../../images/citizen.png" />
+            <Image url="@../../res/citizen.png" />
          </image>
       </ImageView>
       <ImageView fx:id="eventImageView" fitHeight="26.0" fitWidth="28.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="5">
          <image>
-            <Image url="@../../images/eventsB.png" />
+            <Image url="@../../res/eventsB.png" />
          </image>
       </ImageView>
       <ImageView fx:id="managementImageView" fitHeight="13.0" fitWidth="262.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="6">
          <image>
-            <Image url="@../../images/management.png" />
+            <Image url="@../../res/management.png" />
          </image>
       </ImageView>
       <ImageView fx:id="addImageView" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="4">
          <image>
-            <Image url="@../../images/add.png" />
+            <Image url="@../../res/add.png" />
          </image>
       </ImageView>
       <ImageView fx:id="brandingImageView" fitHeight="122.0" fitWidth="117.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
          <image>
-            <Image url="@../../images/MenuIconB.png" />
+            <Image url="@../../res/MenuIconB.png" />
          </image>
          <GridPane.margin>
             <Insets left="10.0" />
@@ -94,7 +94,7 @@
       </Text>
       <ImageView fx:id="event2ImageView" fitHeight="13.0" fitWidth="13.0" pickOnBounds="true" preserveRatio="true" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.rowIndex="7">
          <image>
-            <Image url="@../../images/list.png" />
+            <Image url="@../../res/list.png" />
          </image>
       </ImageView>
       <Button mnemonicParsing="false" onAction="#GEEventManagementOnAction" style="-fx-background-color: #ffffff;" text="Quản lý thu phí bắt buộc" GridPane.columnIndex="2" GridPane.rowIndex="7" />
