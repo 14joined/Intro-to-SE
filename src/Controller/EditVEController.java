@@ -18,6 +18,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class EditVEController implements Initializable {
 
@@ -93,6 +95,15 @@ public class EditVEController implements Initializable {
         moneyCol.setOnEditCommit((TableColumn.CellEditEvent<VE_Citizen, String> event) ->{
             TablePosition<VE_Citizen, String> pos = event.getTablePosition();
             String newMoney = event.getNewValue();
+            Pattern pattern = Pattern.compile("\\d*");
+            Matcher matcher = pattern.matcher(newMoney);
+            if(!matcher.matches()) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("");
+                alert.setHeaderText("Số tiền phải là số nguyên dương");
+                alert.show();
+                return;
+            }
             int row = pos.getRow();
             VE_Citizen ve_citizen = event.getTableView().getItems().get(row);
             ve_citizen.setSoTien(newMoney);

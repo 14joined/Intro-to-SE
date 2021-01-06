@@ -24,6 +24,8 @@ import java.net.URL;
 import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class FamilyWorkspaceController implements Initializable {
 
@@ -169,6 +171,15 @@ public class FamilyWorkspaceController implements Initializable {
         numCol.setOnEditCommit((TableColumn.CellEditEvent<Citizen, String> event) ->{
                     TablePosition<Citizen, String> pos = event.getTablePosition();
                     String newNum = event.getNewValue();
+                    Pattern pattern = Pattern.compile("\\d*");
+                    Matcher matcher = pattern.matcher(newNum);
+                    if(!matcher.matches()) {
+                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                        alert.setTitle("");
+                        alert.setHeaderText("Số nhân khẩu phải là số nguyên dương");
+                        alert.show();
+                        return;
+                    }
                     int row = pos.getRow();
                     Citizen citizen = event.getTableView().getItems().get(row);
                     citizen.setSoThanhVien(newNum);
@@ -284,17 +295,18 @@ public class FamilyWorkspaceController implements Initializable {
         if (tableView.getSelectionModel().getSelectedItem() == null) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("");
-            alert.setHeaderText("Bạn cần chọn hộ gia đình muốn chỉnh sửa");
+            alert.setHeaderText("Bạn cần chọn một hộ gia đình");
             alert.show();
             return;
         }
         selected = tableView.getSelectionModel().getSelectedItem();
-        AddCitizenController.string = "edit";
+    //    AddCitizenController.string = "edit";
         Stage stage = new Stage();
+
         Parent tableViewParent = null;
         try {
-            stage.setTitle("Edit a citizen");
-            tableViewParent = FXMLLoader.load(getClass().getResource("../View/AddCitizen.fxml"));
+            stage.setTitle("Thống kê hộ gia đình");
+            tableViewParent = FXMLLoader.load(getClass().getResource("/View/DetailFamily.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
