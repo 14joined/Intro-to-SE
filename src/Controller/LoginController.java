@@ -63,7 +63,7 @@ public class LoginController implements Initializable {
 
         if (!usernameTextField.getText().isBlank() && !enterPasswordField.getText().isBlank()) {
             if (validationLogin()) {
-                loginMessageLabel.setText("Congratulation!");
+                loginMessageLabel.setText("Đăng nhập thành công");
                 Task<Void> task = new Task<>() {
                     @Override
                     protected Void call() {
@@ -81,7 +81,7 @@ public class LoginController implements Initializable {
                         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
                         Parent tableViewParent = null;
                         try {
-                            String title = "Welcome, " + usernameTextField.getText() + "!";
+                            String title = "Xin chào, " + usernameTextField.getText() + "!";
                             window.setTitle(title);
                             tableViewParent = FXMLLoader.load(getClass().getResource("../View/updated_main.fxml"));
                         } catch (IOException e) {
@@ -95,10 +95,10 @@ public class LoginController implements Initializable {
                 });
                 new Thread(task).start();
             } else {
-                loginMessageLabel.setText("Invalid login. Please try again.");
+                loginMessageLabel.setText("Sai tên đăng nhập hoặc mật khẩu");
             }
         } else {
-            loginMessageLabel.setText("Please enter username and password");
+            loginMessageLabel.setText("Bạn chưa điền tên đăng nhập và mật khẩu");
         }
 
     }

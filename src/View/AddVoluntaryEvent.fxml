@@ -27,7 +27,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <TextArea fx:id="noteTA" layoutX="14.0" layoutY="211.0" prefHeight="88.0" prefWidth="339.0" />
+      <TextArea fx:id="noteTA" layoutX="14.0" layoutY="211.0" prefHeight="88.0" prefWidth="654.0" />
       <Button fx:id="save" layoutX="542.0" layoutY="344.0" mnemonicParsing="false" onAction="#saveOnAction" prefHeight="31.0" prefWidth="71.0" text="Lưu" />
       <Button fx:id="cancel" layoutX="633.0" layoutY="344.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="31.0" prefWidth="63.0" text="Huỷ" />
       <Label layoutX="387.0" layoutY="41.0" text="Ngày bắt đầu">
